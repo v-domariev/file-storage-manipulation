@@ -31,8 +31,8 @@ max_folder_id=`expr $max_folder_id + 1`;
 echo "outptupath/$max_folder_id: $outputpath$max_folder_id";
 echo "max_folder_id + 1: $max_folder_id";
 
-
+mkdir $outputpath$max_folder_id;
 # 2.  Group files.
 
-# ls $inputpath | head -5 | xargs mv -t $outputpath/$max_folder_id
+# ls $inputpath | head -5 | xargs mv -t $outputpath$max_folder_id
 
