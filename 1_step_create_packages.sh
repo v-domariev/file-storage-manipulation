@@ -33,6 +33,6 @@ echo "max_folder_id + 1: $max_folder_id";
 
 mkdir $outputpath$max_folder_id;
 # 2.  Transfer files into group.
-
+ #_UP Добавить параметр количества файлов, что должны быть перемещены. К примеру, 100. После достижения 100 файло - цикл заканчивается.
 ls -d $inputpath/* | head -5 |  xargs mv -t $outputpath$max_folder_id/.;
 
