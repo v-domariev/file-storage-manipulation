@@ -25,14 +25,15 @@ ls -vrd "$inputpath";
 
 max_folder_id=$(ls -vr $outputpath | grep -x -E '[[:digit:]]+' | head -1);
 
-# max_folder_id=${ls -vr $inputpath | grep -x -E '[[:digit:]]+'/ | head -1};
-echo "max_folder_id: $max_folder_id";
-max_folder_id=`expr $max_folder_id + 1`;
-echo "outptupath/$max_folder_id: $outputpath$max_folder_id";
-echo "max_folder_id + 1: $max_folder_id";
+while((max_folder_id < 100)); do
+	max_folder_id=`expr $max_folder_id + 1`;
+	echo "max_folder_id: $max_folder_id";
+	mkdir $outputpath$max_folder_id;
 
-mkdir $outputpath$max_folder_id;
-# 2.  Transfer files into group.
- #_UP Добавить параметр количества файлов, что должны быть перемещены. К примеру, 100. После достижения 100 файло - цикл заканчивается.
-ls -d $inputpath/* | head -5 |  xargs mv -t $outputpath$max_folder_id/.;
+
+	# 2.  Transfer files into group.
+	 #_UP Добавить параметр количества файлов, что должны быть перемещены. К примеру, 100. После достижения 100 файло - цикл заканчивается.
+	ls -d $inputpath/* | head -5 |  xargs mv -t $outputpath$max_folder_id/.;
+done
+
 
